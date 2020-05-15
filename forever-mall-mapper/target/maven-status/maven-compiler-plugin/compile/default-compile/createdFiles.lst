@@ -1,0 +1,15 @@
+com\lym\mapper\UsersMapper.class
+com\lym\mapper\ItemsMapper.class
+com\lym\my\mapper\MyMapper.class
+com\lym\mapper\CategoryMapperCustom.class
+com\lym\mapper\OrderItemsMapper.class
+com\lym\mapper\OrdersMapper.class
+com\lym\mapper\ItemsCommentsMapper.class
+com\lym\mapper\ItemsImgMapper.class
+com\lym\mapper\CarouselMapper.class
+com\lym\mapper\ItemsSpecMapper.class
+com\lym\mapper\StuMapper.class
+com\lym\mapper\UserAddressMapper.class
+com\lym\mapper\OrderStatusMapper.class
+com\lym\mapper\CategoryMapper.class
+com\lym\mapper\ItemsParamMapper.class

@@ -15,7 +15,7 @@ public class StuController {
     @Autowired
     private StuService stuService;
 
-    @Transactional(propagation = Propagation.REQUIRED)
+    //@Transactional(propagation = Propagation.REQUIRED)
     @GetMapping("/getStu")
     public Object getStu(int id) {
         return stuService.getStuInfo(id);

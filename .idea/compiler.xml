@@ -13,7 +13,7 @@
         <module name="forever-mall-service" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="8">
       <module name="forever-mall-common" target="1.8" />
     </bytecodeTargetLevel>
   </component>
