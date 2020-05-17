@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>forever-mall-common</artifactId>
+    <artifactId>forever-mall-commons</artifactId>
 
 
 </project>

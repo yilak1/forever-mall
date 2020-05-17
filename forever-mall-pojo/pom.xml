@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>com.lym</groupId>
-            <artifactId>forever-mall-common</artifactId>
+            <artifactId>forever-mall-commons</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
