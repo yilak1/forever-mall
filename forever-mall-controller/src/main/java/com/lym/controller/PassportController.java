@@ -4,7 +4,10 @@ package com.lym.controller;
 import com.lym.pojo.Users;
 import com.lym.pojo.bo.UserBO;
 import com.lym.service.UserService;
+import com.lym.utils.CookieUtils;
 import com.lym.utils.IMOOCJSONResult;
+import com.lym.utils.JsonUtils;
+import com.lym.utils.MD5Utils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
@@ -80,8 +83,8 @@ public class PassportController {
 
         userResult = setNullProperty(userResult);
 
-       // CookieUtils.setCookie(request, response, "user",
-               // JsonUtils.objectToJson(userResult), true);
+        CookieUtils.setCookie(request, response, "user",
+                JsonUtils.objectToJson(userResult), true);
 
         // TODO 生成用户token，存入redis会话
         // TODO 同步购物车数据
@@ -89,40 +92,41 @@ public class PassportController {
         return IMOOCJSONResult.ok();
     }
 
-//    @ApiOperation(value = "用户登录", notes = "用户登录", httpMethod = "POST")
-//    @PostMapping("/login")
-//    public IMOOCJSONResult login(@RequestBody UserBO userBO,
-//                                 HttpServletRequest request,
-//                                 HttpServletResponse response) throws Exception {
-//
-//        String username = userBO.getUsername();
-//        String password = userBO.getPassword();
-//
-//        // 0. 判断用户名和密码必须不为空
-//        if (StringUtils.isBlank(username) ||
-//                StringUtils.isBlank(password)) {
-//            return IMOOCJSONResult.errorMsg("用户名或密码不能为空");
-//        }
-//
-//        // 1. 实现登录
-//        Users userResult = userService.queryUserForLogin(username,
-//                    MD5Utils.getMD5Str(password));
-//
-//        if (userResult == null) {
-//            return IMOOCJSONResult.errorMsg("用户名或密码不正确");
-//        }
-//
-//        userResult = setNullProperty(userResult);
-//
-//        CookieUtils.setCookie(request, response, "user",
-//                JsonUtils.objectToJson(userResult), true);
-//
-//
-//        // TODO 生成用户token，存入redis会话
-//        // TODO 同步购物车数据
-//
-//        return IMOOCJSONResult.ok(userResult);
-//    }
+    @ApiOperation(value = "用户登录", notes = "用户登录", httpMethod = "POST")
+    @PostMapping("/login")
+    public IMOOCJSONResult login(@RequestBody UserBO userBO,
+                                 HttpServletRequest request,
+                                 HttpServletResponse response) throws Exception {
+
+        String username = userBO.getUsername();
+        String password = userBO.getPassword();
+
+        // 0. 判断用户名和密码必须不为空
+        if (StringUtils.isBlank(username) ||
+                StringUtils.isBlank(password)) {
+            return IMOOCJSONResult.errorMsg("用户名或密码不能为空");
+        }
+
+        // 1. 实现登录
+        Users userResult = userService.queryUserForLogin(username,
+                    MD5Utils.getMD5Str(password));
+
+        if (userResult == null) {
+            return IMOOCJSONResult.errorMsg("用户名或密码不正确");
+        }
+
+        //为了返回字符串不用
+        userResult = setNullProperty(userResult);
+
+        CookieUtils.setCookie(request, response, "user",
+                JsonUtils.objectToJson(userResult), true);
+
+
+        // TODO 生成用户token，存入redis会话
+        // TODO 同步购物车数据
+
+        return IMOOCJSONResult.ok(userResult);
+    }
 
     private Users setNullProperty(Users userResult) {
         userResult.setPassword(null);
@@ -134,20 +138,20 @@ public class PassportController {
         return userResult;
     }
 
-//
-//    @ApiOperation(value = "用户退出登录", notes = "用户退出登录", httpMethod = "POST")
-//    @PostMapping("/logout")
-//    public IMOOCJSONResult logout(@RequestParam String userId,
-//                                  HttpServletRequest request,
-//                                  HttpServletResponse response) {
-//
-//        // 清除用户的相关信息的cookie
-//       // CookieUtils.deleteCookie(request, response, "user");
-//
-//        // TODO 用户退出登录，需要清空购物车
-//        // TODO 分布式会话中需要清除用户数据
-//
-//        return IMOOCJSONResult.ok();
-//    }
+
+    @ApiOperation(value = "用户退出登录", notes = "用户退出登录", httpMethod = "POST")
+    @PostMapping("/logout")
+    public IMOOCJSONResult logout(@RequestParam String userId,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response) {
+
+        // 清除用户的相关信息的cookie
+        CookieUtils.deleteCookie(request, response, "user");
+
+        // TODO 用户退出登录，需要清空购物车
+        // TODO 分布式会话中需要清除用户数据
+
+        return IMOOCJSONResult.ok();
+    }
 
 }
