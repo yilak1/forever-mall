@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lym.mapper.UsersMapperCustom" >
+  <select id="queryUserInfo" parameterType="java.lang.String" resultType="com.lym.pojo.vo.center.UserInfoVO">
+    SELECT
+      u.id as id,
+      u.nickname as nickname,
+      u.realname as realname,
+      u.sex as sex,
+      u.birthday as birthday,
+      u.mobile as mobile,
+      u.email as email,
+      u.face as face,
+      u.username as username
+    FROM `users` as u
+    where u.id = #{userId}
+  </select>
+
+</mapper>

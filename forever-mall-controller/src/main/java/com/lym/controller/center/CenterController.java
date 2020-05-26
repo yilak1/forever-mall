@@ -1,11 +1,13 @@
 package com.lym.controller.center;
 
 import com.lym.pojo.Users;
+import com.lym.pojo.vo.center.UserInfoVO;
 import com.lym.service.center.CenterUserService;
 import com.lym.utils.IMOOCJSONResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +28,11 @@ public class CenterController {
             @ApiParam(name = "userId", value = "用户id", required = true)
             @RequestParam String userId) {
 
-        Users user = centerUserService.queryUserInfo(userId);
-        return IMOOCJSONResult.ok(user);
+        if(StringUtils.isBlank(userId)) {
+            return IMOOCJSONResult.errorMsg("userId不能是空");
+        }
+        UserInfoVO userInfoVO = centerUserService.queryUserInfo(userId);
+        return IMOOCJSONResult.ok(userInfoVO);
     }
 
 

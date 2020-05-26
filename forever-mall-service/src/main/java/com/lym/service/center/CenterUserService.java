@@ -2,6 +2,7 @@ package com.lym.service.center;
 
 import com.lym.pojo.Users;
 import com.lym.pojo.bo.center.CenterUserBO;
+import com.lym.pojo.vo.center.UserInfoVO;
 
 public interface CenterUserService {
 
@@ -10,14 +11,20 @@ public interface CenterUserService {
      * @param userId
      * @return
      */
-    public Users queryUserInfo(String userId);
+    public UserInfoVO queryUserInfo(String userId);
 
     /**
      * 修改用户信息
      * @param userId
      * @param centerUserBO
      */
-    public Users updateUserInfo(String userId, CenterUserBO centerUserBO);
+    public UserInfoVO updateUserInfo(String userId, CenterUserBO centerUserBO);
 
-
+    /**
+     * 修改用户的头像
+     * @param userId
+     * @param imageUrl
+     * @return
+     */
+    public UserInfoVO updateUserFace(String userId, String imageUrl);
 }
