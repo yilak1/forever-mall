@@ -1,6 +1,7 @@
 package com.lym.pojo.vo.center;
 
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -8,21 +9,13 @@ import java.util.List;
  */
 public class OrderVO {
     private String orderId;
-    private String createdTime;
-    private int payMethod;
+    private Date createdTime;
+    private Integer payMethod;
     private Integer realPayAmount;
     private Integer postAmount;
-    private int orderStatus;
-    private int isComment;
-    private List<OrderItemSpec> subItem;
-
-    public int getIsComment() {
-        return isComment;
-    }
-
-    public void setIsComment(int isComment) {
-        this.isComment = isComment;
-    }
+    private Integer isComment;
+    private Integer orderStatus;
+    private List<OrderItemSpec> subOrderItemList;
 
     public String getOrderId() {
         return orderId;
@@ -32,19 +25,19 @@ public class OrderVO {
         this.orderId = orderId;
     }
 
-    public String getCreatedTime() {
+    public Date getCreatedTime() {
         return createdTime;
     }
 
-    public void setCreatedTime(String createdTime) {
+    public void setCreatedTime(Date createdTime) {
         this.createdTime = createdTime;
     }
 
-    public int getPayMethod() {
+    public Integer getPayMethod() {
         return payMethod;
     }
 
-    public void setPayMethod(int payMethod) {
+    public void setPayMethod(Integer payMethod) {
         this.payMethod = payMethod;
     }
 
@@ -64,19 +57,27 @@ public class OrderVO {
         this.postAmount = postAmount;
     }
 
-    public int getOrderStatus() {
+    public Integer getIsComment() {
+        return isComment;
+    }
+
+    public void setIsComment(Integer isComment) {
+        this.isComment = isComment;
+    }
+
+    public Integer getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(int orderStatus) {
+    public void setOrderStatus(Integer orderStatus) {
         this.orderStatus = orderStatus;
     }
 
-    public List<OrderItemSpec> getSubItem() {
-        return subItem;
+    public List<OrderItemSpec> getSubOrderItemList() {
+        return subOrderItemList;
     }
 
-    public void setSubItem(List<OrderItemSpec> subItem) {
-        this.subItem = subItem;
+    public void setSubOrderItemList(List<OrderItemSpec> subOrderItemList) {
+        this.subOrderItemList = subOrderItemList;
     }
 }

@@ -9,18 +9,9 @@ public class OrderItemSpec {
     private String itemImg;
     private String itemName;
     private String itemSpecName;
-    private int price;
-    private int buyCounts;
-
+    private Integer buyCounts;
+    private Integer price;
     private String itemSpecId;
-
-    public String getItemSpecId() {
-        return itemSpecId;
-    }
-
-    public void setItemSpecId(String itemSpecId) {
-        this.itemSpecId = itemSpecId;
-    }
 
     public String getItemId() {
         return itemId;
@@ -54,19 +45,27 @@ public class OrderItemSpec {
         this.itemSpecName = itemSpecName;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public int getBuyCounts() {
+    public Integer getBuyCounts() {
         return buyCounts;
     }
 
-    public void setBuyCounts(int buyCounts) {
+    public void setBuyCounts(Integer buyCounts) {
         this.buyCounts = buyCounts;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public String getItemSpecId() {
+        return itemSpecId;
+    }
+
+    public void setItemSpecId(String itemSpecId) {
+        this.itemSpecId = itemSpecId;
     }
 }
